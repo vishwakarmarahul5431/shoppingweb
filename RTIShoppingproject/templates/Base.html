@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cl1{
+            border: 2px solid blueviolet;
+            text-shadow: 2px 2px red;
+        }
+    </style>
+
+</head>
+<body >
+{% include 'cdnlines.html' %}
+<h1 class="text-center bg-warning text-primary cl1">WELCOME TO RTISHOPPING</h1>
+{% include 'Navbar.html' %}
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>

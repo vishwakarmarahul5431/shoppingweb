@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+{% include 'cdnlines.html' %}
+
+ {% block content %}
+     <style>
+     .cl2{
+         margin-left: 25%;
+     }
+     .cl3{
+         margin-left: 25%;
+     }
+     </style>
+
+
+<div class="conatainer-fluid">
+    <div class="row" >
+        <div class="offset-md-4 col-md-5 text-light" style="border: 2px solid blue; background-color: #007bb7; margin-top: 5%; margin-right:6% ; padding: 1%">
+
+            <h2 class="text-center text-white"><b><u>SignUp Here..</u></b></h2>
+            {% include 'alert.html' %}
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                <h6 class="cl3">{{ form.first_name.label }} :</h6>
+
+
+                <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  {{ form.first_name }}
+
+              </div>
+
+
+            <h6 class="cl3">{{ form.last_name.label }} :</h6>
+                <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                 {{ form.last_name }}<br>
+
+              </div>
+
+
+
+            <h6 class="cl3">{{ form.email.label }} :</h6>
+                <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                   {{ form.email }}<br>
+              </div>
+
+
+
+            <h6 class="cl3">{{ form.username.label }} :</h6>
+                 <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                 {{ form.username }}<br>
+
+              </div>
+
+
+
+                <h6 class="cl3">{{ form.password1.label }} :</h6>
+                <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  {{ form.password1 }}<br>
+
+              </div>
+
+
+            <h6 class="cl3">{{ form.password2.label }} :</h6>
+                <div class="input-group cl2">
+                  <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  {{ form.password2 }}<br>
+
+              </div>
+
+                <center>
+                    <input type="submit" class="btn btn-success btn-sm" value="Signup">
+                    <input type="reset" class="btn btn-danger btn-sm" value="Clear">
+                </center>
+            </form>
+            <br>
+            <a href="{% url 'login' %}" class="text-warning"><b>Login</b></a>
+            <a href="{% url 'main_page' %}" style="float: right;" class="text-warning"><b>Go to Main Page</b></a>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+     <script>
+      var form_fields=document.getElementsByTagName('input')
+      form_fields[1].placeholder = 'First Name...'
+      form_fields[2].placeholder = 'Last Name...'
+      form_fields[3].placeholder = 'Email...'
+      form_fields[4].placeholder = 'Username...'
+      form_fields[5].placeholder = 'Password...'
+      form_fields[6].placeholder = 'Confirm Password...'
+
+
+    </script>
+ {% endblock %}
+</body>
+</html>

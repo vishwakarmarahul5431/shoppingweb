@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    {% load cart %}
+    <style>
+
+    .notify-badge{
+    position: absolute;
+    right:25px;
+    top:5px;
+    background:red;
+    text-align: center;
+    border-radius: 30px ;
+    color:white;
+    padding:5px 10px;
+    font-size:10px;
+}
+
+
+    </style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+  <a class="navbar-brand" href="{% url 'main_page' %}"><b>RTIshopping</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main_page' %}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/?category=1">Men</a>
+      </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" href="/?category=2">Women</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" href="/?category=3">Kids</a>
+         </li>
+
+
+
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Electronics
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/?category=5">Mobile</a>
+          <a class="dropdown-item" href="/?category=6">Tablet</a>
+
+
+
+          <a class="dropdown-item" href="/?category=4">Laptop</a>
+          <a class="dropdown-item" href="/?category=7">TV</a>
+          <div class="dropdown-divider"></div>
+
+{#            {% for foo in catergories %}#}
+{##}
+{##}
+{##}
+{#          <a class="dropdown-item" href="/?category={{ foo.id }}">{{ foo.name }}</a>#}
+{#             {% endfor %}#}
+{#        </div>#}
+      </li>
+
+     <li class="nav-item">
+        <a class="nav-link active" href="/?category=8">Sports</a>
+      </li>
+
+        &nbsp;&nbsp;&nbsp;
+         <form class="form-inline my-2 my-lg-0" method="POST">
+           {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+
+
+
+
+       <li class="nav-item active dropdown">
+
+      </li>
+
+
+
+
+      </ul>
+
+            <div class="btn-group">
+              <a type="button" class=" dropdown-toggle text-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="text-white">Hellow, {{ request.user|capfirst }}</span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                <a class="dropdown-item" href="{% url 'register' %}">Signup</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+
+
+              </div>
+            </div>&nbsp&nbsp&nbsp&nbsp;&nbsp&nbsp&nbsp
+
+      <a href="#" class="text-light">Your Order <i class="fas fa-file-download"></i></a>&nbsp;&nbsp&nbsp&nbsp&nbsp;&nbsp&nbsp&nbsp&nbsp;
+
+
+      <a href="{% url 'cart' %}" class="text-white"><i class="fas fa-shopping-cart  "> <small class="badge badge-danger   notify-badge"><b>{{ request.session.cart.keys|length }}</b></small>&nbsp;&nbsp;</i></a>&nbsp&nbsp&nbsp&nbsp&nbsp
+
+  </div>
+</nav>
+{% endblock %}
+
+</body>
+</html>

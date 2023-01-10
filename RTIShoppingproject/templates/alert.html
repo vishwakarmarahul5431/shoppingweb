@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+     <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                      <center>  <p class="alert alert-{{message.tags}}">{{ message }}</p></center>
+                    {% endfor %}
+                {% endif %}
+{% endblock %}
+
+</body>
+</html>
